@@ -135,6 +135,7 @@ INSERT INTO `hbc`.`rol_usuario` (`id_rol`, `nombre_rol`) VALUES ('3', 'docente')
 SELECT * FROM Usuario;
 INSERT INTO `hbc`.`Usuario` (`ID_usuario`, `nombre_usuario`, `contraseña`, `id_rol`) VALUES ('1', 'Rgonzalez', '1234', '1');
 INSERT INTO `hbc`.`Usuario` (`ID_usuario`, `nombre_usuario`, `contraseña`, `id_rol`) VALUES ('2', '22019107', '5678', '2');
+INSERT INTO `hbc`.`Usuario` (`ID_usuario`, `nombre_usuario`, `contraseña`, `id_rol`) VALUES ('3', 'Aurbina', '7777', '3');
 UPDATE Usuario
 SET id_rol = 3
 WHERE ID_usuario = 1;
@@ -142,6 +143,7 @@ WHERE ID_usuario = 1;
 SELECT * FROM perfil;
 INSERT INTO `hbc`.`perfil` (`id_perfil`, `Nombre`, `Apellido`, `email`, `telefono`, `Usuario_ID_usuario`) VALUES ('1', 'Raquel', 'Gonzalez', 'Rgonzalez@gmail.com', '55559999', '1');
 INSERT INTO `hbc`.`perfil` (`id_perfil`, `Nombre`, `Apellido`, `email`, `telefono`, `Usuario_ID_usuario`) VALUES ('2', 'Juan', 'Lopez', 'Jlopez@gmail.com', '33338888', '2');
+INSERT INTO `hbc`.`perfil` (`id_perfil`, `Nombre`, `Apellido`, `email`, `telefono`, `Usuario_ID_usuario`) VALUES ('3', 'Adolfo', 'Onichan', 'Aurbina@gmail.com', '88889999', '3');
 
 SELECT * FROM Curso;
 INSERT INTO `hbc`.`Curso` (`ID_curso`, `nombre_curso`, `descripcion`) VALUES ('1', 'Grupo-1k', 'clase de 2do año');
@@ -155,6 +157,9 @@ INSERT INTO `hbc`.`Asignatura` (`ID_asignatura`, `nombre_asignatura`, `ID_curso`
 SELECT * FROM Nota;
 INSERT INTO `hbc`.`Nota` (`ID_nota`, `valor_nota`, `comentarios`, `ID_asignatura`, `ID_usuario`) VALUES ('1', '89', 'muy bien', '1', '2');
 INSERT INTO `hbc`.`Nota` (`ID_nota`, `valor_nota`, `comentarios`, `ID_asignatura`, `ID_usuario`) VALUES ('2', '56', 'puede mejorar', '2', '2');
+UPDATE Nota
+SET comentarios = 'Que es esa mierda'
+WHERE ID_Nota = 2;
 SET SQL_SAFE_UPDATES = 0;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
