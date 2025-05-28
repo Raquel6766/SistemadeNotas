@@ -9,24 +9,29 @@ class Asignatura {
         $this->conn = $db->connect();
     }
 
-    public function obtenerAsignaturas() {
+    // Mostrar solo asignaturas impartidas por el docente actual
+    public function obtenerAsignaturasPorDocente($id_docente) {
         $stmt = $this->conn->prepare("
-            SELECT a.*, c.nombre_curso 
-            FROM Asignatura a
-            LEFT JOIN Curso c ON a.ID_curso = c.ID_curso
+            SELECT a.ID_asignatura, a.nombre_asignatura, c.grado AS nombre_curso
+            FROM asignatura a
+            JOIN curso c ON a.curso_ID_curso = c.ID_curso
+            JOIN `asignatura-docente` ad ON a.ID_asignatura = ad.asignatura_ID_asignatura
+            WHERE ad.usuario_ID_usuario = ?
         ");
-        $stmt->execute();
+        $stmt->execute([$id_docente]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function agregarAsignatura($nombre, $curso_id) {
-        $stmt = $this->conn->prepare("INSERT INTO Asignatura(nombre_asignatura, ID_curso) VALUES (?, ?)");
+        $stmt = $this->conn->prepare("
+            INSERT INTO asignatura(nombre_asignatura, curso_ID_curso)
+            VALUES (?, ?)
+        ");
         return $stmt->execute([$nombre, $curso_id]);
     }
 
     public function eliminarAsignatura($id) {
-        $stmt = $this->conn->prepare("DELETE FROM Asignatura WHERE ID_asignatura = ?");
+        $stmt = $this->conn->prepare("DELETE FROM asignatura WHERE ID_asignatura = ?");
         return $stmt->execute([$id]);
     }
 }
-?>
