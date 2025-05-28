@@ -3,9 +3,28 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+  .header-line-wrapper {
+    display: flex;
+    height: 8px; /* Altura de las líneas */
+  }
+
+  .header-line {
+    flex: 1; /* Cada línea ocupa el 50% del ancho */
+    height: 100%;
+  }
+
+  .line-left {
+    background-color:rgb(143, 28, 39); /* Azul */
+  }
+
+  .line-right {
+    background-color:rgb(16, 18, 122) /* Rojo */
+  }
+</style>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(41, 41, 41);">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Sistema Notas</a>
 
@@ -21,6 +40,9 @@
     </div>
   </div>
 </nav>
-
+<div class="header-line-wrapper">
+  <div class="header-line line-left"></div>
+  <div class="header-line line-right"></div>
+</div>
 <!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
